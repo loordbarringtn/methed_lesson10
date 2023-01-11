@@ -1,3 +1,5 @@
+import { listIPv4 } from "./ipadresses.js";
+
 const cart = {
     items: [],
     totalPrice: 0,
@@ -7,7 +9,6 @@ const cart = {
     count: 0,
     add(productName, productPrice, quantity) {
         this.items.push({productName,productPrice,quantity});
-        this.totalPrice += (productPrice * quantity);
         this.count += quantity;
     },
     increaseCount() {
@@ -18,7 +19,6 @@ const cart = {
     },
     clear() {
         this.items.length = 0;
-        this.totalPrice = 0;
         this.count = 0;
     },
     print() {
@@ -34,8 +34,14 @@ cart.add('Арбуз',230,2);
 cart.print();
 console.log(`Использование гетера: ${cart.totalPrice}`);
 
-cart.totalPrice = 1000000000;
-console.log(`Переназначить значение 'totalPrice' нельзя: ${cart.totalPrice}`);
+// cart.totalPrice = 1000000000;
+// console.log(`Переназначить значение 'totalPrice' нельзя: ${cart.totalPrice}`);
 
 cart.clear();
 cart.print();
+
+const findArrayUniqueNumbers = (array) => {
+    return Array.from(new Set(array)).length;
+};
+
+console.log(`Уникальных ip адресов в массиве: ${findArrayUniqueNumbers(listIPv4)}, всего значений: ${listIPv4.length}`);
